@@ -60,6 +60,34 @@ class Formularios extends Component{
   }
 }
 
+class ListarNombres extends Component{
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       lista: [
+         'Alexander',
+         'Edwin'
+        ]
+    }
+  }
+  
+  
+  render() {
+    return (
+      <div>
+        <h1>{this.state.lista.map((title)=>{
+          return <p>{title}</p>
+        })
+        }
+        </h1>
+      </div>
+    )
+  }
+  
+}
+
+
 class IncrementarState extends Component{
   constructor(props) {
     super(props);
@@ -92,7 +120,7 @@ class App extends Component {
   render(){
     return (
       <div>
-      <Formularios/>
+      <ListarNombres/>
       </div>
       );
     } 
