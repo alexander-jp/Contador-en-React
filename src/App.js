@@ -1,26 +1,44 @@
-import React from 'react';
+import React, {Component} from 'react';
+import { render } from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class IncrementarState extends Component{
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      contador:0
+    }
+  }
+
+  aumentar = ()=>{
+    this.setState({
+      contador: this.state.contador+=1
+    })
+  }
+
+  render(){
+    return(
+      <div>
+      <h1>contador: {this.state.contador}</h1>
+      <button onClick={
+        this.aumentar
+        //this.state.contador +=1;
+      }>Click me</button>
+      </div>);
+  }
 }
 
-export default App;
+
+class App extends Component {
+  render(){
+    return (
+      <div>
+      <IncrementarState/>
+      </div>
+      );
+    } 
+  }
+
+  export default App;
