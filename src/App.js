@@ -25,6 +25,12 @@ class Formularios extends Component{
     })
   }
 
+  sincronizarCambios(value, property){
+    let state ={}
+    state[property]=value;
+    this.setState(state);
+  }
+
   submitLogin = ()=>{
     console.log("tu email: "+ this.state.email + " tu password: "+ this.state.password)
   }
@@ -36,13 +42,13 @@ class Formularios extends Component{
          placeholder="Email"
           type="email"
           value={this.state.email}
-          onChange={(ev)=>{this.sincronizarEmail(ev.target.value)}}/>
+          onChange={(ev)=>{this.sincronizarCambios(ev.target.value, 'email')}}/>
 
          <input 
          placeholder="Password"
          type="password"
          value={this.state.password}
-         onChange={(ev)=>{this.sincronizarPass(ev.target.value)}}/>
+         onChange={(ev)=>{this.sincronizarPass(ev.target.value, 'password')}}/>
 
          <h4>Tu nombre es: {this.state.email}</h4>
          <input
