@@ -66,9 +66,17 @@ class ListarNombres extends Component{
   
     this.state = {
        lista: [
-         'Alexander',
-         'Edwin'
-        ]
+         {
+           nombre: 'Alexander',
+           edad: '20',
+           ciudad: 'Mexico'
+         },
+         {
+          nombre: 'Julio',
+          edad: '20',
+          ciudad: 'Sabanilla'
+         }
+       ]
     }
   }
   
@@ -77,7 +85,7 @@ class ListarNombres extends Component{
     return (
       <div>
         <h1>{this.state.lista.map((title)=>{
-          return <p>{title}</p>
+          return <p>{title['nombre']} {title['ciudad']}</p>
         })
         }
         </h1>
