@@ -71,11 +71,15 @@ class Lista extends Component {
   };
 
 
-  componentDidMount(){
-    let promesa = fetch('https://jsonplaceholder.typicode.com/posts');
-    promesa.then((response)=> response.json()).then((data)=>{
+  componentDidMount() {
+    let promesa = fetch('https://cors-anywhere.herokuapp.com/https://cinetux.herokuapp.com/recientes/', {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    });
+    promesa.then((response) => response.json()).then((data) => {
       this.setState({
-        lista:data
+        lista: data.resultado
       })
     })
   }
@@ -83,15 +87,31 @@ class Lista extends Component {
   render() {
     return (
       <div>
-          <p className="palabra">{this.state.lista.map((valor)=>{
-            return <p style={ { backgroundColor: '#09d3ac'} }>{valor.title}</p>
-          })
-          }</p>
-      </div>
-    );
-  }
 
+        <p className="palabra">{this.state.lista.map((valor) => {
+          return <ul className="media-list">
+            <li className="media">
+              <div className="media-left">
+                <a href="https://www.google.com">
+                  <img className="media-object contenedor" src={valor.url_img} alt={valor.movie_name}/>
+                </a>
+              </div>
+              <div className="media-body">
+                <h4 className="media-heading">{valor.movie_name}</h4>
+                <h3 className="media-heading">{valor.movie_url}</h3>
+              </div>
+            </li>
+          </ul>
+        })
+        }
+        </p>
+      </div>
+    )
+  }
 }
+
+
+
 
 class ListarNombres extends Component {
   constructor(props) {
