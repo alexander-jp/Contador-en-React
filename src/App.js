@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
+import { Button } from 'react-bootstrap';
 
 class Formularios extends Component {
   constructor(props) {
@@ -73,12 +74,8 @@ class Lista extends Component {
   componentDidMount(){
     let promesa = fetch('https://jsonplaceholder.typicode.com/posts');
     promesa.then((response)=> response.json()).then((data)=>{
-      console.log(data)
-    })
-
-    response.then((response)=>{
-      response.json().then((data)=>{
-        console.log(data)
+      this.setState({
+        lista:data
       })
     })
   }
@@ -86,13 +83,10 @@ class Lista extends Component {
   render() {
     return (
       <div>
-        <ul>
-          <li>Lista de nombres</li>
-          <li>{this.state.lista.map((valor) => {
-            return <li>{valor['nombre']}</li>
+          <p className="palabra">{this.state.lista.map((valor)=>{
+            return <p style={ { backgroundColor: '#09d3ac'} }>{valor.title}</p>
           })
-          }</li>
-        </ul>
+          }</p>
       </div>
     );
   }
